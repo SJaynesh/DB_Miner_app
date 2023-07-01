@@ -25,7 +25,7 @@ class _SettingsPageState extends State<SettingsPage> {
             },
             icon: Icon(
               Icons.arrow_back,
-              color: (store.read("themeMode")) ? Colors.white : Color(0xff212832),
+              color: (store.read("themeMode")??false) ? Colors.white : Color(0xff212832),
             ),
           ),
           title: Text(
@@ -34,15 +34,15 @@ class _SettingsPageState extends State<SettingsPage> {
               fontSize: heigth * 0.03,
               fontWeight: FontWeight.w600,
               color:
-                  (store.read("themeMode")) ? Colors.white : Color(0xff212832),
+                  (store.read("themeMode")??false) ? Colors.white : Color(0xff212832),
             ),
           ),
           elevation: 0,
           backgroundColor:
-              (store.read("themeMode")) ? Color(0xff212832) : Colors.white,
+              (store.read("themeMode")??false) ? Color(0xff212832) : Colors.white,
         ),
         backgroundColor:
-            (store.read("themeMode")) ? Color(0xff212832) : Colors.white,
+            (store.read("themeMode")??false) ? Color(0xff212832) : Colors.white,
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -56,7 +56,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     style: TextStyle(
                       fontSize: heigth * 0.02,
                       fontWeight: FontWeight.w500,
-                      color: (store.read("themeMode"))
+                      color: (store.read("themeMode")??false)
                           ? Colors.white
                           : Color(0xff212832),
                     ),
@@ -64,7 +64,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   ListTile(
                     leading: Icon(
                       Icons.dark_mode,
-                      color: (store.read("themeMode"))
+                      color: (store.read("themeMode")??false)
                           ? Colors.white
                           : Color(0xff212832),
                     ),
@@ -74,7 +74,7 @@ class _SettingsPageState extends State<SettingsPage> {
                         textStyle: TextStyle(
                           fontSize: heigth * 0.0218,
                           fontWeight: FontWeight.w500,
-                          color: (store.read("themeMode"))
+                          color: (store.read("themeMode")??false)
                               ? Colors.white
                               : Color(0xff212832),
                         ),
@@ -90,7 +90,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   ListTile(
                     leading: Icon(
                       Icons.person,
-                      color: (store.read("themeMode"))
+                      color: (store.read("themeMode")??false)
                           ? Colors.white
                           : Color(0xff212832),
                     ),
@@ -100,7 +100,7 @@ class _SettingsPageState extends State<SettingsPage> {
                         textStyle: TextStyle(
                           fontSize: heigth * 0.0218,
                           fontWeight: FontWeight.w500,
-                          color: (store.read("themeMode"))
+                          color: (store.read("themeMode")??false)
                               ? Colors.white
                               : Color(0xff212832),
                         ),
@@ -116,7 +116,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   ListTile(
                     leading: Icon(
                       Icons.category_sharp,
-                      color: (store.read("themeMode"))
+                      color: (store.read("themeMode")??false)
                           ? Colors.white
                           : Color(0xff212832),
                     ),
@@ -126,7 +126,7 @@ class _SettingsPageState extends State<SettingsPage> {
                         textStyle: TextStyle(
                           fontSize: heigth * 0.0218,
                           fontWeight: FontWeight.w500,
-                          color: (store.read("themeMode"))
+                          color: (store.read("themeMode")??false)
                               ? Colors.white
                               : Color(0xff212832),
                         ),
@@ -153,7 +153,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     style: TextStyle(
                       fontSize: heigth * 0.02,
                       fontWeight: FontWeight.w500,
-                      color: (store.read("themeMode"))
+                      color: (store.read("themeMode")??false)
                           ? Colors.white
                           : Color(0xff212832),
                     ),
@@ -161,7 +161,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   ListTile(
                     leading: Icon(
                       Icons.notifications,
-                      color: (store.read("themeMode"))
+                      color: (store.read("themeMode")??false)
                           ? Colors.white
                           : Color(0xff212832),
                     ),
@@ -171,7 +171,7 @@ class _SettingsPageState extends State<SettingsPage> {
                         textStyle: TextStyle(
                           fontSize: heigth * 0.0218,
                           fontWeight: FontWeight.w500,
-                          color: (store.read("themeMode"))
+                          color: (store.read("themeMode")??false)
                               ? Colors.white
                               : Color(0xff212832),
                         ),
@@ -187,7 +187,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   ListTile(
                     leading: Icon(
                       Icons.notifications_active,
-                      color: (store.read("themeMode"))
+                      color: (store.read("themeMode")??false)
                           ? Colors.white
                           : Color(0xff212832),
                     ),
@@ -197,7 +197,7 @@ class _SettingsPageState extends State<SettingsPage> {
                         textStyle: TextStyle(
                           fontSize: heigth * 0.0218,
                           fontWeight: FontWeight.w500,
-                          color: (store.read("themeMode"))
+                          color: (store.read("themeMode")??false)
                               ? Colors.white
                               : Color(0xff212832),
                         ),
@@ -205,7 +205,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     ),
                     trailing: Icon(
                       Icons.arrow_forward_ios,
-                      color: (store.read("themeMode"))
+                      color: (store.read("themeMode")??false)
                           ? Colors.white
                           : Color(0xff212832),
                     ),
@@ -224,7 +224,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     style: TextStyle(
                       fontSize: heigth * 0.02,
                       fontWeight: FontWeight.w500,
-                      color: (store.read("themeMode"))
+                      color: (store.read("themeMode")??false)
                           ? Colors.white
                           : Color(0xff212832),
                     ),
@@ -232,7 +232,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   ListTile(
                     leading: Icon(
                       Icons.star,
-                      color: (store.read("themeMode"))
+                      color: (store.read("themeMode")??false)
                           ? Colors.white
                           : Color(0xff212832),
                     ),
@@ -242,7 +242,7 @@ class _SettingsPageState extends State<SettingsPage> {
                         textStyle: TextStyle(
                           fontSize: heigth * 0.0218,
                           fontWeight: FontWeight.w500,
-                          color: (store.read("themeMode"))
+                          color: (store.read("themeMode")??false)
                               ? Colors.white
                               : Color(0xff212832),
                         ),
@@ -252,7 +252,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   ListTile(
                     leading: Icon(
                       Icons.privacy_tip,
-                      color: (store.read("themeMode"))
+                      color: (store.read("themeMode")??false)
                           ? Colors.white
                           : Color(0xff212832),
                     ),
@@ -262,7 +262,7 @@ class _SettingsPageState extends State<SettingsPage> {
                         textStyle: TextStyle(
                           fontSize: heigth * 0.0218,
                           fontWeight: FontWeight.w500,
-                          color: (store.read("themeMode"))
+                          color: (store.read("themeMode")??false)
                               ? Colors.white
                               : Color(0xff212832),
                         ),

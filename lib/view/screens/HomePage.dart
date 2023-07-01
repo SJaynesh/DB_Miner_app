@@ -31,8 +31,6 @@ class _HomePageState extends State<HomePage> {
   SettingsController settingsController = Get.put(SettingsController());
   ThemeController themeController = Get.put(ThemeController());
 
-  ScreenshotController screenshotController = ScreenshotController();
-
   @override
   void initState() {
     super.initState();
@@ -258,136 +256,15 @@ class _HomePageState extends State<HomePage> {
                                                                     child:
                                                                         Column(
                                                                       children: [
-                                                                        GetBuilder<SettingsController>(builder:
-                                                                            (_) {
-                                                                          return IconButton(
-                                                                            onPressed:
-                                                                                () {
-                                                                              Get.back();
-                                                                              (store.read("permissionGallery") != true)
-                                                                                  ? Get.defaultDialog(
-                                                                                      title: "",
-                                                                                      radius: 0,
-                                                                                      backgroundColor: Colors.white,
-                                                                                      content: Padding(
-                                                                                        padding: const EdgeInsets.all(20),
-                                                                                        child: Column(
-                                                                                          children: [
-                                                                                            Icon(
-                                                                                              Icons.folder_copy_outlined,
-                                                                                              color: Colors.green.shade800,
-                                                                                              size: heigth * 0.035,
-                                                                                            ),
-                                                                                            SizedBox(
-                                                                                              height: heigth * 0.025,
-                                                                                            ),
-                                                                                            RichText(
-                                                                                              text: TextSpan(
-                                                                                                children: [
-                                                                                                  TextSpan(
-                                                                                                    text: "Allow",
-                                                                                                    style: GoogleFonts.poppins(
-                                                                                                      textStyle: TextStyle(
-                                                                                                        color: Colors.black,
-                                                                                                        fontSize: heigth * 0.025,
-                                                                                                        fontWeight: FontWeight.w400,
-                                                                                                      ),
-                                                                                                    ),
-                                                                                                  ),
-                                                                                                  TextSpan(
-                                                                                                    text: " MotiVerse",
-                                                                                                    style: GoogleFonts.poppins(
-                                                                                                      textStyle: TextStyle(
-                                                                                                        color: Colors.black,
-                                                                                                        fontSize: heigth * 0.028,
-                                                                                                        fontWeight: FontWeight.bold,
-                                                                                                      ),
-                                                                                                    ),
-                                                                                                  ),
-                                                                                                  TextSpan(
-                                                                                                    text: " to access photos, media, and files on your device?",
-                                                                                                    style: GoogleFonts.poppins(
-                                                                                                      textStyle: TextStyle(
-                                                                                                        color: Colors.black,
-                                                                                                        fontSize: heigth * 0.025,
-                                                                                                        fontWeight: FontWeight.w400,
-                                                                                                      ),
-                                                                                                    ),
-                                                                                                  ),
-                                                                                                ],
-                                                                                              ),
-                                                                                            ),
-                                                                                          ],
-                                                                                        ),
-                                                                                      ),
-                                                                                      actions: [
-                                                                                          Divider(),
-                                                                                          GestureDetector(
-                                                                                            onTap: () {
-                                                                                              screenshotController.capture(delay: Duration(milliseconds: 10)).then((capturedImage) async {
-                                                                                                final result = await ImageGallerySaver.saveImage(capturedImage!, name: "New Image");
-                                                                                                print("${result} File Saved to Gallery");
-                                                                                              }).catchError((onError) {
-                                                                                                print(onError);
-                                                                                              });
-
-                                                                                              Fluttertoast.showToast(
-                                                                                                msg: "Save Gallery",
-                                                                                                toastLength: Toast.LENGTH_SHORT,
-                                                                                                textColor: Colors.white,
-                                                                                                fontSize: 16,
-                                                                                                backgroundColor: Colors.grey,
-                                                                                              );
-
-                                                                                              Get.back();
-                                                                                            },
-                                                                                            child: Text(
-                                                                                              "Allow",
-                                                                                              style: TextStyle(
-                                                                                                color: Colors.green.shade800,
-                                                                                                fontWeight: FontWeight.bold,
-                                                                                              ),
-                                                                                            ),
-                                                                                          ),
-                                                                                          Divider(),
-                                                                                          GestureDetector(
-                                                                                            onTap: () {
-                                                                                              Get.back();
-                                                                                            },
-                                                                                            child: Text(
-                                                                                              "Deny",
-                                                                                              style: TextStyle(
-                                                                                                color: Colors.green.shade800,
-                                                                                                fontWeight: FontWeight.bold,
-                                                                                              ),
-                                                                                            ),
-                                                                                          ),
-                                                                                        ])
-                                                                                  : screenshotController.capture(delay: Duration(milliseconds: 10)).then((capturedImage) async {
-                                                                                      final result = await ImageGallerySaver.saveImage(capturedImage!, name: "New Image");
-                                                                                      print("${result} File Saved to Gallery");
-                                                                                    }).catchError((onError) {
-                                                                                      print(onError);
-                                                                                    });
-
-                                                                              Fluttertoast.showToast(
-                                                                                msg: "Save Gallery",
-                                                                                toastLength: Toast.LENGTH_SHORT,
-                                                                                textColor: Colors.white,
-                                                                                fontSize: 16,
-                                                                                backgroundColor: Colors.grey,
-                                                                              );
-
-                                                                              Get.back();
-
-                                                                              settingsController.getPermissionGalleryValue();
-                                                                              print("Check Dialog");
-                                                                              print(store.read("permissionGallery"));
-                                                                            },
-                                                                            icon:
-                                                                                Icon(Icons.download),
-                                                                          );
-                                                                        }),
+                                                                        IconButton(
+                                                                          onPressed:
+                                                                              () {
+                                                                            Get.back();
+                                                                            settingsController.getPermissionGalleryValue();
+                                                                          },
+                                                                          icon:
+                                                                              Icon(Icons.download),
+                                                                        ),
                                                                         Text(
                                                                           "Save to\nGallery",
                                                                           style:
@@ -436,7 +313,7 @@ class _HomePageState extends State<HomePage> {
                                                                                             Fluttertoast.showToast(
                                                                                               msg: "Set As Home Screen Wallpaper",
                                                                                               toastLength: Toast.LENGTH_SHORT,
-                                                                                              textColor: Colors.white,
+                                                                                              textColor: Colors.green,
                                                                                               fontSize: 16,
                                                                                               backgroundColor: Colors.grey,
                                                                                             );
@@ -451,7 +328,7 @@ class _HomePageState extends State<HomePage> {
                                                                                           "Home screen",
                                                                                           style: GoogleFonts.poppins(
                                                                                             textStyle: TextStyle(
-                                                                                              color: (store.read("themeMode")) ? Colors.white : Color(0xff212832),
+                                                                                              color: Color(0xff212832),
                                                                                               fontSize: heigth * 0.025,
                                                                                               letterSpacing: 1,
                                                                                               fontWeight: FontWeight.w500,
@@ -477,7 +354,7 @@ class _HomePageState extends State<HomePage> {
                                                                                             Fluttertoast.showToast(
                                                                                               msg: "Set As Lock Screen Wallpaper",
                                                                                               toastLength: Toast.LENGTH_SHORT,
-                                                                                              textColor: Colors.white,
+                                                                                              textColor: Colors.green,
                                                                                               fontSize: 16,
                                                                                               backgroundColor: Colors.grey,
                                                                                             );
@@ -492,7 +369,7 @@ class _HomePageState extends State<HomePage> {
                                                                                           "Lock screen",
                                                                                           style: GoogleFonts.poppins(
                                                                                             textStyle: TextStyle(
-                                                                                              color: (store.read("themeMode")) ? Colors.white : Color(0xff212832),
+                                                                                              color: Color(0xff212832) ,
                                                                                               fontSize: heigth * 0.025,
                                                                                               letterSpacing: 1,
                                                                                               fontWeight: FontWeight.w500,
@@ -518,7 +395,7 @@ class _HomePageState extends State<HomePage> {
                                                                                             Fluttertoast.showToast(
                                                                                               msg: "Set As Both Screen Wallpaper",
                                                                                               toastLength: Toast.LENGTH_SHORT,
-                                                                                              textColor: Colors.white,
+                                                                                              textColor: Colors.green,
                                                                                               fontSize: 16,
                                                                                               backgroundColor: Colors.grey,
                                                                                             );
@@ -533,7 +410,7 @@ class _HomePageState extends State<HomePage> {
                                                                                           "Home & Lock screen",
                                                                                           style: GoogleFonts.poppins(
                                                                                             textStyle: TextStyle(
-                                                                                              color: (store.read("themeMode")) ? Colors.white : Color(0xff212832),
+                                                                                              color:  Color(0xff212832),
                                                                                               fontSize: heigth * 0.025,
                                                                                               letterSpacing: 1,
                                                                                               fontWeight: FontWeight.w500,
@@ -557,7 +434,7 @@ class _HomePageState extends State<HomePage> {
                                                                                           "Cancel",
                                                                                           style: GoogleFonts.poppins(
                                                                                             textStyle: TextStyle(
-                                                                                              color: (store.read("themeMode")) ? Colors.white : Color(0xff212832),
+                                                                                              color: Color(0xff212832),
                                                                                               fontSize: heigth * 0.025,
                                                                                               letterSpacing: 1,
                                                                                               fontWeight: FontWeight.w500,

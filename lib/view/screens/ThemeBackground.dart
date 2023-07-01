@@ -26,7 +26,7 @@ class _ThemeBackgroundState extends State<ThemeBackground> {
           },
           icon: Icon(
             Icons.arrow_back,
-            color: (store.read("themeMode")) ? Colors.white : Color(0xff212832),
+            color: (store.read("themeMode")??false) ? Colors.white : Color(0xff212832),
           ),
         ),
         title: Text(
@@ -34,15 +34,15 @@ class _ThemeBackgroundState extends State<ThemeBackground> {
           style: TextStyle(
             fontSize: heigth * 0.03,
             fontWeight: FontWeight.w600,
-            color: (store.read("themeMode")) ? Colors.white : Color(0xff212832),
+            color: (store.read("themeMode")??false) ? Colors.white : Color(0xff212832),
           ),
         ),
         backgroundColor:
-            (store.read("themeMode")) ? Color(0xff212832) : Colors.white,
+            (store.read("themeMode")??false) ? Color(0xff212832) : Colors.white,
         elevation: 0,
       ),
       backgroundColor:
-          (store.read("themeMode")) ? Color(0xff212832) : Colors.white,
+          (store.read("themeMode")??false) ? Color(0xff212832) : Colors.white,
       body: Padding(
         padding: const EdgeInsets.all(10),
         child: GetBuilder<ThemeController>(builder: (_) {

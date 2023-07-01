@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:screenshot/screenshot.dart';
 
 import '../models/category_database_model.dart';
 import '../models/quotes_database_model.dart';
@@ -114,3 +115,5 @@ List<String> Themes = [
   "assets/images/Themes/53.png",
   "assets/images/Themes/54.png",
 ];
+
+ScreenshotController screenshotController = ScreenshotController();

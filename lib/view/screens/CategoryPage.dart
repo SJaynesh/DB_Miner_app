@@ -27,7 +27,7 @@ class _CategoryPageState extends State<CategoryPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor:
-          (store.read("themeMode")) ? Color(0xff212832) : Colors.white,
+          (store.read("themeMode")??false) ? Color(0xff212832) : Colors.white,
       appBar: AppBar(
         leading: IconButton(
           onPressed: () {
@@ -35,7 +35,7 @@ class _CategoryPageState extends State<CategoryPage> {
           },
           icon: Icon(
             Icons.arrow_back,
-            color: (store.read("themeMode")) ? Colors.white : Color(0xff212832),
+            color: (store.read("themeMode")??false) ? Colors.white : Color(0xff212832),
           ),
         ),
         title: Text(
@@ -43,11 +43,11 @@ class _CategoryPageState extends State<CategoryPage> {
           style: TextStyle(
             fontSize: heigth * 0.03,
             fontWeight: FontWeight.w600,
-            color: (store.read("themeMode")) ? Colors.white : Color(0xff212832),
+            color: (store.read("themeMode")??false) ? Colors.white : Color(0xff212832),
           ),
         ),
         backgroundColor:
-            (store.read("themeMode")) ? Color(0xff212832) : Colors.white,
+            (store.read("themeMode")??false) ? Color(0xff212832) : Colors.white,
         elevation: 0,
         actions: [
           IconButton(
@@ -56,18 +56,18 @@ class _CategoryPageState extends State<CategoryPage> {
               Icons.search,
               size: heigth * 0.038,
               color:
-                  (store.read("themeMode")) ? Colors.white : Color(0xff212832),
+                  (store.read("themeMode")??false) ? Colors.white : Color(0xff212832),
             ),
           ),
           IconButton(
             onPressed: () {},
             icon: Icon(Icons.favorite),
-            color: (store.read("themeMode")) ? Colors.white : Color(0xff212832),
+            color: (store.read("themeMode")??false) ? Colors.white : Color(0xff212832),
           ),
           IconButton(
             onPressed: () {},
             icon: Icon(Icons.star),
-            color: (store.read("themeMode")) ? Colors.white : Color(0xff212832),
+            color: (store.read("themeMode")??false) ? Colors.white : Color(0xff212832),
           ),
         ],
       ),
@@ -117,7 +117,7 @@ class _CategoryPageState extends State<CategoryPage> {
                               textStyle: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: heigth * 0.023,
-                                color: (store.read("themeMode")) ? Colors.white : Color(0xff212832),
+                                color: (store.read("themeMode")??false) ? Colors.white : Color(0xff212832),
                               ),
                             ),
                           ),
@@ -216,7 +216,7 @@ class _CategoryPageState extends State<CategoryPage> {
                               textStyle: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: heigth * 0.023,
-                                color: (store.read("themeMode")) ? Colors.white : Color(0xff212832),
+                                color: (store.read("themeMode")??false) ? Colors.white : Color(0xff212832),
                               ),
                             ),
                           ),
@@ -315,7 +315,7 @@ class _CategoryPageState extends State<CategoryPage> {
                               textStyle: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: heigth * 0.023,
-                                color: (store.read("themeMode")) ? Colors.white : Color(0xff212832),
+                                color: (store.read("themeMode")??false) ? Colors.white : Color(0xff212832),
                               ),
                             ),
                           ),
@@ -414,7 +414,7 @@ class _CategoryPageState extends State<CategoryPage> {
                               textStyle: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: heigth * 0.023,
-                                color: (store.read("themeMode")) ? Colors.white : Color(0xff212832),
+                                color: (store.read("themeMode")??false) ? Colors.white : Color(0xff212832),
                               ),
                             ),
                           ),
@@ -513,7 +513,7 @@ class _CategoryPageState extends State<CategoryPage> {
                               textStyle: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: heigth * 0.023,
-                                color: (store.read("themeMode")) ? Colors.white : Color(0xff212832),
+                                color: (store.read("themeMode")??false) ? Colors.white : Color(0xff212832),
                               ),
                             ),
                           ),
