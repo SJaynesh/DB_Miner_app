@@ -1,9 +1,7 @@
 class ThemeModel {
-  String? ligthTheme;
-  String? datkTheme;
+  int? indexCheck;
 
   ThemeModel({
-    this.ligthTheme,
-    this.datkTheme,
+    this.indexCheck,
   });
 }

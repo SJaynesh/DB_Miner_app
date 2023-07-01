@@ -1,4 +1,4 @@
-import 'package:code/controllers/wallpepar_controller.dart';
+import 'package:code/controllers/theme_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -14,26 +14,38 @@ class ThemeBackground extends StatefulWidget {
 
 class _ThemeBackgroundState extends State<ThemeBackground> {
   AtributesController atributesController = Get.find<AtributesController>();
-  WallpeparController wallpeparController = Get.find<WallpeparController>();
+  ThemeController themeController = Get.find<ThemeController>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {
+            Get.back();
+          },
+          icon: Icon(
+            Icons.arrow_back,
+            color: (store.read("themeMode")) ? Colors.white : Color(0xff212832),
+          ),
+        ),
         title: Text(
           "Themes",
           style: TextStyle(
             fontSize: heigth * 0.03,
             fontWeight: FontWeight.w600,
+            color: (store.read("themeMode")) ? Colors.white : Color(0xff212832),
           ),
         ),
-        backgroundColor: (Get.isDarkMode) ? Color(0xff212832) : Colors.white,
+        backgroundColor:
+            (store.read("themeMode")) ? Color(0xff212832) : Colors.white,
         elevation: 0,
       ),
-      backgroundColor: (Get.isDarkMode) ? Color(0xff212832) : Colors.white,
+      backgroundColor:
+          (store.read("themeMode")) ? Color(0xff212832) : Colors.white,
       body: Padding(
         padding: const EdgeInsets.all(10),
-        child: GetBuilder<WallpeparController>(builder: (_) {
+        child: GetBuilder<ThemeController>(builder: (_) {
           return GridView.builder(
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 3,
@@ -45,7 +57,7 @@ class _ThemeBackgroundState extends State<ThemeBackground> {
             itemBuilder: (context, i) => GestureDetector(
               onTap: () {
                 atributesController.getImage(img: Themes[i]);
-                wallpeparController.getIndex(index: i);
+                themeController.getIndex(index: i);
                 Get.back();
               },
               child: Container(
@@ -59,13 +71,11 @@ class _ThemeBackgroundState extends State<ThemeBackground> {
                 alignment: Alignment.bottomCenter,
                 child: Padding(
                   padding: const EdgeInsets.all(10),
-                  child: (wallpeparController.wallpeparModel.indexCheck == i)
+                  child: (themeController.themeModel.indexCheck == i)
                       ? CircleAvatar(
                           radius: heigth * 0.015,
-                          backgroundColor: (Get.isDarkMode)
-                              ? Color(0xff212832)
-                              : Colors.white,
-                          child: Icon(Icons.check),
+                          backgroundColor: Colors.white,
+                          child: Icon(Icons.check,color: Color(0xff212832)),
                         )
                       : Container(),
                 ),

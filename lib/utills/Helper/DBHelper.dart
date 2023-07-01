@@ -63,7 +63,6 @@ class DBHelper {
     }
 
     for(int i = 0; i < Category.length; i++) {
-      print("length : ${Category[i].quotes.length}");
       for(int j=0; j< Category[i].quotes.length; j++) {
         String query2 = "INSERT INTO quotes(id,quote,author)VALUES(?,?,?);";
         List args = [
@@ -145,13 +144,13 @@ class DBHelper {
 
     DataBaseCheckController dataBaseCheckController = DataBaseCheckController();
 
-    if (data.read("isInsert") != true) {
+    if (store.read("isInsert") != true) {
       await insertCategory();
       print("INSERT TABLE");
-      print(data.read("isInsert"));
+      print(store.read("isInsert"));
     } else {
       print("NOT REPERT");
-      print(data.read("isInsert"));
+      print(store.read("isInsert"));
     }
 
     dataBaseCheckController.InsertInValue();

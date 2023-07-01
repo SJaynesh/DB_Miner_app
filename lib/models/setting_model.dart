@@ -1,13 +1,15 @@
 class SettingsModel {
   bool themeMode;
   bool showAuthor;
-  bool showcategory;
+  bool showCategory;
   bool enableNotifications;
+  bool permissionGallery;
 
   SettingsModel({
     required this.themeMode,
     required this.showAuthor,
-    required this.showcategory,
+    required this.showCategory,
     required this.enableNotifications,
+    required this.permissionGallery,
   });
 }

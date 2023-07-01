@@ -7,7 +7,7 @@ import '../models/quotes_database_model.dart';
 double heigth = Get.height;
 double width = Get.width;
 
-final data = GetStorage();
+final store = GetStorage();
 
 Future<List<QuotesDatabaseModel>>? getAllQuotes;
 Future<List<CategoryDatabaseModel>>? getAllCategory;

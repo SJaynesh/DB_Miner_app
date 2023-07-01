@@ -19,15 +19,30 @@ class _SettingsPageState extends State<SettingsPage> {
     return GetBuilder<SettingsController>(builder: (_) {
       return Scaffold(
         appBar: AppBar(
+          leading: IconButton(
+            onPressed: () {
+              Get.back();
+            },
+            icon: Icon(
+              Icons.arrow_back,
+              color: (store.read("themeMode")) ? Colors.white : Color(0xff212832),
+            ),
+          ),
           title: Text(
             "Setting",
             style: TextStyle(
               fontSize: heigth * 0.03,
               fontWeight: FontWeight.w600,
+              color:
+                  (store.read("themeMode")) ? Colors.white : Color(0xff212832),
             ),
           ),
           elevation: 0,
+          backgroundColor:
+              (store.read("themeMode")) ? Color(0xff212832) : Colors.white,
         ),
+        backgroundColor:
+            (store.read("themeMode")) ? Color(0xff212832) : Colors.white,
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -41,58 +56,84 @@ class _SettingsPageState extends State<SettingsPage> {
                     style: TextStyle(
                       fontSize: heigth * 0.02,
                       fontWeight: FontWeight.w500,
+                      color: (store.read("themeMode"))
+                          ? Colors.white
+                          : Color(0xff212832),
                     ),
                   ),
                   ListTile(
-                    leading: Icon(Icons.dark_mode),
+                    leading: Icon(
+                      Icons.dark_mode,
+                      color: (store.read("themeMode"))
+                          ? Colors.white
+                          : Color(0xff212832),
+                    ),
                     title: Text(
                       "Theme mode",
                       style: GoogleFonts.poppins(
                         textStyle: TextStyle(
                           fontSize: heigth * 0.0218,
                           fontWeight: FontWeight.w500,
+                          color: (store.read("themeMode"))
+                              ? Colors.white
+                              : Color(0xff212832),
                         ),
                       ),
                     ),
                     trailing: Switch(
-                      value: settingsController.settingsModel.themeMode,
+                      value: store.read("themeMode") ?? false,
                       onChanged: (val) {
                         settingsController.getThemeValue(val: val);
-
                       },
                     ),
                   ),
                   ListTile(
-                    leading: Icon(Icons.person),
+                    leading: Icon(
+                      Icons.person,
+                      color: (store.read("themeMode"))
+                          ? Colors.white
+                          : Color(0xff212832),
+                    ),
                     title: Text(
                       "Show Author",
                       style: GoogleFonts.poppins(
                         textStyle: TextStyle(
                           fontSize: heigth * 0.0218,
                           fontWeight: FontWeight.w500,
+                          color: (store.read("themeMode"))
+                              ? Colors.white
+                              : Color(0xff212832),
                         ),
                       ),
                     ),
                     trailing: Switch(
-                      value: settingsController.settingsModel.showAuthor,
+                      value: store.read("showAuthor") ?? false,
                       onChanged: (val) {
                         settingsController.getAuthorValue(val: val);
                       },
                     ),
                   ),
                   ListTile(
-                    leading: Icon(Icons.category_sharp),
+                    leading: Icon(
+                      Icons.category_sharp,
+                      color: (store.read("themeMode"))
+                          ? Colors.white
+                          : Color(0xff212832),
+                    ),
                     title: Text(
                       "Show recent categories",
                       style: GoogleFonts.poppins(
                         textStyle: TextStyle(
                           fontSize: heigth * 0.0218,
                           fontWeight: FontWeight.w500,
+                          color: (store.read("themeMode"))
+                              ? Colors.white
+                              : Color(0xff212832),
                         ),
                       ),
                     ),
                     trailing: Switch(
-                      value: settingsController.settingsModel.showcategory,
+                      value: store.read("showCategory") ?? false,
                       onChanged: (val) {
                         settingsController.getCategoryValue(val: val);
                       },
@@ -112,39 +153,62 @@ class _SettingsPageState extends State<SettingsPage> {
                     style: TextStyle(
                       fontSize: heigth * 0.02,
                       fontWeight: FontWeight.w500,
+                      color: (store.read("themeMode"))
+                          ? Colors.white
+                          : Color(0xff212832),
                     ),
                   ),
                   ListTile(
-                    leading: Icon(Icons.notifications),
+                    leading: Icon(
+                      Icons.notifications,
+                      color: (store.read("themeMode"))
+                          ? Colors.white
+                          : Color(0xff212832),
+                    ),
                     title: Text(
                       "Enable notifications",
                       style: GoogleFonts.poppins(
                         textStyle: TextStyle(
                           fontSize: heigth * 0.0218,
                           fontWeight: FontWeight.w500,
+                          color: (store.read("themeMode"))
+                              ? Colors.white
+                              : Color(0xff212832),
                         ),
                       ),
                     ),
                     trailing: Switch(
-                      value:
-                          settingsController.settingsModel.enableNotifications,
+                      value: store.read("enableNotifications") ?? false,
                       onChanged: (val) {
                         settingsController.getNotificationValue(val: val);
                       },
                     ),
                   ),
                   ListTile(
-                    leading: Icon(Icons.notifications_active),
+                    leading: Icon(
+                      Icons.notifications_active,
+                      color: (store.read("themeMode"))
+                          ? Colors.white
+                          : Color(0xff212832),
+                    ),
                     title: Text(
                       "Set Reminders",
                       style: GoogleFonts.poppins(
                         textStyle: TextStyle(
                           fontSize: heigth * 0.0218,
                           fontWeight: FontWeight.w500,
+                          color: (store.read("themeMode"))
+                              ? Colors.white
+                              : Color(0xff212832),
                         ),
                       ),
                     ),
-                    trailing: Icon(Icons.arrow_forward_ios),
+                    trailing: Icon(
+                      Icons.arrow_forward_ios,
+                      color: (store.read("themeMode"))
+                          ? Colors.white
+                          : Color(0xff212832),
+                    ),
                   ),
                 ],
               ),
@@ -160,28 +224,47 @@ class _SettingsPageState extends State<SettingsPage> {
                     style: TextStyle(
                       fontSize: heigth * 0.02,
                       fontWeight: FontWeight.w500,
+                      color: (store.read("themeMode"))
+                          ? Colors.white
+                          : Color(0xff212832),
                     ),
                   ),
                   ListTile(
-                    leading: Icon(Icons.star),
+                    leading: Icon(
+                      Icons.star,
+                      color: (store.read("themeMode"))
+                          ? Colors.white
+                          : Color(0xff212832),
+                    ),
                     title: Text(
                       "Rate Us",
                       style: GoogleFonts.poppins(
                         textStyle: TextStyle(
                           fontSize: heigth * 0.0218,
                           fontWeight: FontWeight.w500,
+                          color: (store.read("themeMode"))
+                              ? Colors.white
+                              : Color(0xff212832),
                         ),
                       ),
                     ),
                   ),
                   ListTile(
-                    leading: Icon(Icons.privacy_tip),
+                    leading: Icon(
+                      Icons.privacy_tip,
+                      color: (store.read("themeMode"))
+                          ? Colors.white
+                          : Color(0xff212832),
+                    ),
                     title: Text(
                       "Privacy Policy",
                       style: GoogleFonts.poppins(
                         textStyle: TextStyle(
                           fontSize: heigth * 0.0218,
                           fontWeight: FontWeight.w500,
+                          color: (store.read("themeMode"))
+                              ? Colors.white
+                              : Color(0xff212832),
                         ),
                       ),
                     ),
