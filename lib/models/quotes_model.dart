@@ -10,11 +10,10 @@ class QuotesModel {
   });
 
   factory QuotesModel.fromJson(Map<String, dynamic> json) => QuotesModel(
-    id: json["id"],
-    category: json["category"],
-    quotes: List<Quote>.from(json["quotes"].map((x) => Quote.fromJson(x))),
-  );
-
+        id: json["id"],
+        category: json["category"],
+        quotes: List<Quote>.from(json["quotes"].map((x) => Quote.fromJson(x))),
+      );
 }
 
 class Quote {
@@ -29,8 +28,8 @@ class Quote {
   });
 
   factory Quote.fromJson(Map<String, dynamic> json) => Quote(
-    id: json["id"],
-    quote: json["quote"],
-    author: json["author"],
-  );
+        id: json["id"],
+        quote: json["quote"],
+        author: json["author"],
+      );
 }

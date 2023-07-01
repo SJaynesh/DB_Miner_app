@@ -38,6 +38,13 @@ dependencies:
   get: ^4.6.5
   sqflite: ^2.2.8+4
   path: ^1.8.3
+  get_storage: ^2.1.1
+  google_fonts: ^5.1.0
+  page_transition: ^2.0.9
+  carousel_slider: ^4.2.1
+  share_plus: ^7.0.2
+  path_provider: ^2.0.15
+  screenshot: ^2.1.0
 
 dev_dependencies:
   flutter_test:
@@ -68,6 +75,9 @@ flutter:
   assets:
     - assets/images/SplachScreen/
     - assets/json/
+    - assets/images/AllJsonImage/
+    - assets/images/CategoryPageImage/
+    - assets/images/Themes/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

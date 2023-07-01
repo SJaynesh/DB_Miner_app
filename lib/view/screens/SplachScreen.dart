@@ -16,6 +16,9 @@ class _SplachScreenState extends State<SplachScreen> {
   Widget build(BuildContext context) {
     Timer(Duration(seconds: 4), () {
       Get.offNamed("/HomePage");
+      //  Route route = MaterialPageRoute(builder: (context) => HomePage());
+      //
+      //    Navigator.of(context).pushAndRemoveUntil(route, (route) => false);
     });
     return Scaffold(
       body: Container(
