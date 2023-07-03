@@ -48,10 +48,16 @@ dependencies:
   image_gallery_saver: ^2.0.2
   async_wallpaper: ^2.0.3
 
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons: ^0.13.1
 
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/Favorite/App Icon.png"
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your
@@ -80,6 +86,7 @@ flutter:
     - assets/images/AllJsonImage/
     - assets/images/CategoryPageImage/
     - assets/images/Themes/
+    - assets/images/Favorite/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

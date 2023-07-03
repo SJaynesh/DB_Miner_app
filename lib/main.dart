@@ -1,3 +1,4 @@
+import 'package:code/view/screens/FavoritePage.dart';
 import 'package:code/view/screens/HomePage.dart';
 import 'package:code/view/screens/CategoryPage.dart';
 import 'package:code/view/screens/SettingsPage.dart';
@@ -38,6 +39,12 @@ void main() async {
         GetPage(
           name: "/ThemeModePage",
           page: () => ThemeBackground(),
+          transition: Transition.rightToLeft,
+          curve: Curves.easeInOut,
+        ),
+        GetPage(
+          name: "/FavoritePage",
+          page: () => FavoritePage(),
           transition: Transition.rightToLeft,
           curve: Curves.easeInOut,
         ),

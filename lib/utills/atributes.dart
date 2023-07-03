@@ -1,17 +1,17 @@
+import 'package:code/models/favorite_database_model.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:screenshot/screenshot.dart';
 
 import '../models/category_database_model.dart';
-import '../models/quotes_database_model.dart';
 
 double heigth = Get.height;
 double width = Get.width;
 
 final store = GetStorage();
 
-Future<List<QuotesDatabaseModel>>? getAllQuotes;
 Future<List<CategoryDatabaseModel>>? getAllCategory;
+Future<List<FavoriteDataBaseModel>>? getAllFavorite;
 
 List<String> allCategoryImage = [
   "assets/images/AllJsonImage/positive.png",

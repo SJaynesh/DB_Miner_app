@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../controllers/atributes_controller.dart';
+import '../../controllers/setting_controller.dart';
 import '../../utills/atributes.dart';
 
 class ThemeBackground extends StatefulWidget {
@@ -15,6 +16,7 @@ class ThemeBackground extends StatefulWidget {
 class _ThemeBackgroundState extends State<ThemeBackground> {
   AtributesController atributesController = Get.find<AtributesController>();
   ThemeController themeController = Get.find<ThemeController>();
+  SettingsController settingsController = Get.find<SettingsController>();
 
   @override
   Widget build(BuildContext context) {

@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:code/controllers/database_check_controller.dart';
 import 'package:code/models/category_database_model.dart';
+import 'package:code/models/favorite_database_model.dart';
 import 'package:code/models/quotes_database_model.dart';
 import 'package:flutter/services.dart';
 import 'package:sqflite/sqflite.dart';
@@ -39,10 +40,14 @@ class DBHelper {
           "CREATE TABLE IF NOT EXISTS category(id INTEGER, category_name TEXT NOT NULL);";
 
       String query2 =
-          "CREATE TABLE IF NOT EXISTS quotes(id INTEGER, quote TEXT NOT NULL, author TEXT NOT NULL);";
+          "CREATE TABLE IF NOT EXISTS quotes(id INTEGER, quote TEXT NOT NULL,author TEXT NOT NULL,favorite INTEGER NOT NULL);";
+
+      String query3 =
+          "CREATE TABLE IF NOT EXISTS favorite(id INTEGER, quote TEXT NOT NULL,author TEXT NOT NULL,favorite INTEGER NOT NULL);";
 
       await db.execute(query);
       await db.execute(query2);
+      await db.execute(query3);
     });
   }
 
@@ -59,75 +64,39 @@ class DBHelper {
       ];
 
       await db!.rawInsert(query, args);
-
     }
 
-    for(int i = 0; i < Category.length; i++) {
-      for(int j=0; j< Category[i].quotes.length; j++) {
-        String query2 = "INSERT INTO quotes(id,quote,author)VALUES(?,?,?);";
+    for (int i = 0; i < Category.length; i++) {
+      for (int j = 0; j < Category[i].quotes.length; j++) {
+        String query2 =
+            "INSERT INTO quotes(id,quote,author,favorite)VALUES(?,?,?,?);";
         List args = [
           Category[i].quotes[j].id,
           Category[i].quotes[j].quote,
           Category[i].quotes[j].author,
+          Category[i].quotes[j].favorite
         ];
-        await db!.rawInsert(query2,args);
+        await db!.rawInsert(query2, args);
       }
     }
   }
 
-  // Future insertCategory() async {
-  //   await initDB();
-  //
-  //   List<QuotesModel> Category = await LocalJsonDataLoad();
-  //
-  //   for (int i = 0; i < Category.length; i++) {
-  //     // ByteData byteData = await rootBundle.load(Category[i].image);
-  //     //
-  //     // Uint8List imgbyte = Uint8List.fromList(byteData.buffer.asInt8List());
-  //
-  //     String query =
-  //         "INSERT INTO category(id, category_name)VALUES(?,?);";
-  //     // print("** $i **");
-  //     // print(imgbyte);
-  //
-  //     List args = [
-  //       Category[i].id,
-  //       Category[i].category,
-  //       // imgbyte,
-  //     ];
-  //     await db!.rawInsert(query, args);
-  //   }
-  //
-  //   for (int i = 0; i < Category.length; i++) {
-  //     print("Leanth : ${Category[i].quotes.length}");
-  //     for (int j = 0; j < Category[i].quotes.length; j++) {
-  //       String query2 = "INSERT INTO quotes(id,quote,author)VALUES(?,?,?);";
-  //       List args = [
-  //         Category[i].quotes[j].id,
-  //         Category[i].quotes[j].quote,
-  //         Category[i].quotes[j].author,
-  //       ];
-  //       await db!.rawInsert(query2, args);
-  //       print("J = $j");
-  //     }
-  //     print("I = $i");
-  //   }
-  // }
+  Future insertFavorite({required QuotesDatabaseModel data}) async {
+    await initDB();
+    String query =
+        "INSERT INTO favorite(id,quote,author,favorite)VALUES(?,?,?,?);";
+    List args = [
+      data.id,
+      data.quotes,
+      data.author,
+      data.favorite,
+    ];
+
+    await db!.rawInsert(query, args);
+  }
 
   Future<List<CategoryDatabaseModel>> fatchAllCategory() async {
     await initDB();
-    // DataBaseCheckController dataBaseCheckController = DataBaseCheckController();
-    //
-    // if (data.read("isInsert") != true) {
-    //   await insertCategory();
-    //   print("INSERT TABLE");
-    //   print(data.read("isInsert"));
-    // } else {
-    //   print("NOT REPERT");
-    //   print(data.read("isInsert"));
-    // }
-    //
-    // dataBaseCheckController.InsertInValue();
 
     String query = "SELECT * FROM category;";
 
@@ -148,9 +117,6 @@ class DBHelper {
       await insertCategory();
       print("INSERT TABLE");
       print(store.read("isInsert"));
-    } else {
-      print("NOT REPERT");
-      print(store.read("isInsert"));
     }
 
     dataBaseCheckController.InsertInValue();
@@ -160,10 +126,50 @@ class DBHelper {
 
     List<Map<String, dynamic>> res = await db!.rawQuery(query, args);
 
-
     List<QuotesDatabaseModel> allQuotes =
         res.map((e) => QuotesDatabaseModel.formMap(data: e)).toList();
 
     return allQuotes;
+  }
+
+  Future<List<FavoriteDataBaseModel>> fatchAllFavorite() async {
+    await initDB();
+
+    String query = "SELECT * FROM favorite;";
+
+    List<Map<String, dynamic>> res = await db!.rawQuery(query);
+
+    List<FavoriteDataBaseModel> allFavorite =
+        res.map((e) => FavoriteDataBaseModel.fromMap(data: e)).toList();
+    return allFavorite;
+  }
+
+  Future updateQuote({required int favorite, required String quote}) async {
+    await initDB();
+
+    String query = "UPDATE quotes SET favorite = ? WHERE quote = ?;";
+    List args = [favorite, quote];
+
+    await db!.rawUpdate(query, args);
+  }
+
+  Future updateSecondQuote(
+      {required int favorite, required String quote}) async {
+    await initDB();
+
+    String query = "UPDATE quotes SET favorite = ? WHERE quote = ?;";
+    List args = [favorite, quote];
+
+    await db!.rawUpdate(query, args);
+  }
+
+  Future deleteFavorite({required String quote}) async {
+    await initDB();
+
+    String query = "DELETE FROM favorite WHERE quote = ?;";
+
+    List args = [quote];
+
+    await db!.rawDelete(query, args);
   }
 }

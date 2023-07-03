@@ -133,9 +133,9 @@ class _SettingsPageState extends State<SettingsPage> {
                       ),
                     ),
                     trailing: Switch(
-                      value: store.read("showCategory") ?? false,
+                      value: store.read("showRecentCategory") ?? false,
                       onChanged: (val) {
-                        settingsController.getCategoryValue(val: val);
+                        settingsController.getRecentCategoryValue(val: val);
                       },
                     ),
                   ),

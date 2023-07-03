@@ -8,4 +8,9 @@ class ThemeController extends GetxController {
     themeModel.indexCheck = index;
     update();
   }
+
+  getFavorite({required int index}) {
+    themeModel.favorite = index;
+    update();
+  }
 }

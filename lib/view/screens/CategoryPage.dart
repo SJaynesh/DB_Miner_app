@@ -1,4 +1,5 @@
 import 'package:code/controllers/atributes_controller.dart';
+import 'package:code/controllers/get_quotes_controller.dart';
 import 'package:code/models/category_database_model.dart';
 import 'package:flutter/material.dart';
 
@@ -16,6 +17,7 @@ class CategoryPage extends StatefulWidget {
 
 class _CategoryPageState extends State<CategoryPage> {
   AtributesController atributesController = Get.find<AtributesController>();
+  GetQuotesController getQuotesController = Get.find<GetQuotesController>();
 
   @override
   void initState() {
@@ -27,7 +29,7 @@ class _CategoryPageState extends State<CategoryPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor:
-          (store.read("themeMode")??false) ? Color(0xff212832) : Colors.white,
+          (store.read("themeMode") ?? false) ? Color(0xff212832) : Colors.white,
       appBar: AppBar(
         leading: IconButton(
           onPressed: () {
@@ -35,7 +37,9 @@ class _CategoryPageState extends State<CategoryPage> {
           },
           icon: Icon(
             Icons.arrow_back,
-            color: (store.read("themeMode")??false) ? Colors.white : Color(0xff212832),
+            color: (store.read("themeMode") ?? false)
+                ? Colors.white
+                : Color(0xff212832),
           ),
         ),
         title: Text(
@@ -43,11 +47,14 @@ class _CategoryPageState extends State<CategoryPage> {
           style: TextStyle(
             fontSize: heigth * 0.03,
             fontWeight: FontWeight.w600,
-            color: (store.read("themeMode")??false) ? Colors.white : Color(0xff212832),
+            color: (store.read("themeMode") ?? false)
+                ? Colors.white
+                : Color(0xff212832),
           ),
         ),
-        backgroundColor:
-            (store.read("themeMode")??false) ? Color(0xff212832) : Colors.white,
+        backgroundColor: (store.read("themeMode") ?? false)
+            ? Color(0xff212832)
+            : Colors.white,
         elevation: 0,
         actions: [
           IconButton(
@@ -55,19 +62,26 @@ class _CategoryPageState extends State<CategoryPage> {
             icon: Icon(
               Icons.search,
               size: heigth * 0.038,
-              color:
-                  (store.read("themeMode")??false) ? Colors.white : Color(0xff212832),
+              color: (store.read("themeMode") ?? false)
+                  ? Colors.white
+                  : Color(0xff212832),
             ),
           ),
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Get.toNamed("/FavoritePage");
+            },
             icon: Icon(Icons.favorite),
-            color: (store.read("themeMode")??false) ? Colors.white : Color(0xff212832),
+            color: (store.read("themeMode") ?? false)
+                ? Colors.white
+                : Color(0xff212832),
           ),
           IconButton(
             onPressed: () {},
             icon: Icon(Icons.star),
-            color: (store.read("themeMode")??false) ? Colors.white : Color(0xff212832),
+            color: (store.read("themeMode") ?? false)
+                ? Colors.white
+                : Color(0xff212832),
           ),
         ],
       ),
@@ -117,7 +131,9 @@ class _CategoryPageState extends State<CategoryPage> {
                               textStyle: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: heigth * 0.023,
-                                color: (store.read("themeMode")??false) ? Colors.white : Color(0xff212832),
+                                color: (store.read("themeMode") ?? false)
+                                    ? Colors.white
+                                    : Color(0xff212832),
                               ),
                             ),
                           ),
@@ -151,8 +167,9 @@ class _CategoryPageState extends State<CategoryPage> {
                                   atributesController.getCategoryName(
                                       val: data[i + 1].category_name);
 
-                                  getAllQuotes = DBHelper.dbHelper
-                                      .fatchAllQuotes(id: data[i + 1].id);
+                                  getQuotesController.getQuotesList(
+                                      allQuotes: DBHelper.dbHelper
+                                          .fatchAllQuotes(id: data[i + 1].id));
                                   Get.back();
                                   setState(() {});
                                 },
@@ -216,7 +233,9 @@ class _CategoryPageState extends State<CategoryPage> {
                               textStyle: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: heigth * 0.023,
-                                color: (store.read("themeMode")??false) ? Colors.white : Color(0xff212832),
+                                color: (store.read("themeMode") ?? false)
+                                    ? Colors.white
+                                    : Color(0xff212832),
                               ),
                             ),
                           ),
@@ -250,8 +269,9 @@ class _CategoryPageState extends State<CategoryPage> {
                                   atributesController.getCategoryName(
                                       val: data[i + 5].category_name);
 
-                                  getAllQuotes = DBHelper.dbHelper
-                                      .fatchAllQuotes(id: data[i + 5].id);
+                                  getQuotesController.getQuotesList(
+                                      allQuotes: DBHelper.dbHelper
+                                          .fatchAllQuotes(id: data[i + 5].id));
                                   Get.back();
                                   setState(() {});
                                 },
@@ -315,7 +335,9 @@ class _CategoryPageState extends State<CategoryPage> {
                               textStyle: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: heigth * 0.023,
-                                color: (store.read("themeMode")??false) ? Colors.white : Color(0xff212832),
+                                color: (store.read("themeMode") ?? false)
+                                    ? Colors.white
+                                    : Color(0xff212832),
                               ),
                             ),
                           ),
@@ -349,8 +371,10 @@ class _CategoryPageState extends State<CategoryPage> {
                                   atributesController.getCategoryName(
                                       val: data[i + 9].category_name);
 
-                                  getAllQuotes = DBHelper.dbHelper
-                                      .fatchAllQuotes(id: data[i + 9].id);
+                                  getQuotesController.getQuotesList(
+                                      allQuotes: DBHelper.dbHelper
+                                          .fatchAllQuotes(id: data[i + 9].id));
+
                                   Get.back();
                                   setState(() {});
                                 },
@@ -414,7 +438,9 @@ class _CategoryPageState extends State<CategoryPage> {
                               textStyle: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: heigth * 0.023,
-                                color: (store.read("themeMode")??false) ? Colors.white : Color(0xff212832),
+                                color: (store.read("themeMode") ?? false)
+                                    ? Colors.white
+                                    : Color(0xff212832),
                               ),
                             ),
                           ),
@@ -448,8 +474,10 @@ class _CategoryPageState extends State<CategoryPage> {
                                   atributesController.getCategoryName(
                                       val: data[i + 12].category_name);
 
-                                  getAllQuotes = DBHelper.dbHelper
-                                      .fatchAllQuotes(id: data[i + 12].id);
+                                  getQuotesController.getQuotesList(
+                                      allQuotes: DBHelper.dbHelper
+                                          .fatchAllQuotes(id: data[i + 12].id));
+
                                   Get.back();
                                   setState(() {});
                                 },
@@ -513,7 +541,9 @@ class _CategoryPageState extends State<CategoryPage> {
                               textStyle: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: heigth * 0.023,
-                                color: (store.read("themeMode")??false) ? Colors.white : Color(0xff212832),
+                                color: (store.read("themeMode") ?? false)
+                                    ? Colors.white
+                                    : Color(0xff212832),
                               ),
                             ),
                           ),
@@ -547,8 +577,10 @@ class _CategoryPageState extends State<CategoryPage> {
                                   atributesController.getCategoryName(
                                       val: data[i + 16].category_name);
 
-                                  getAllQuotes = DBHelper.dbHelper
-                                      .fatchAllQuotes(id: data[i + 16].id);
+                                  getQuotesController.getQuotesList(
+                                      allQuotes: DBHelper.dbHelper
+                                          .fatchAllQuotes(id: data[i + 16].id));
+
                                   Get.back();
                                   setState(() {});
                                 },
